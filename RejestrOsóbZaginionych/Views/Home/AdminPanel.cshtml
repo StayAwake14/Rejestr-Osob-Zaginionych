@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "ROZ - Panel Administratora";
+}
+
+@{
+    if (Session["login"] != null)
+    {
+        if (Session["rank"].ToString() == "Administrator")
+        {
+            <h1>
+                Panel Administratora
+            </h1>
+            <table>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Dodaj osobę zaginioną", "AddMissingPerson", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edytuj osoby zaginione", "PersonsList", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Usuń osobę zaginioną", "PersonsList", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+            </table>
+        }
+        else if (Session["rank"].ToString() == "Moderator")
+        {
+            <h1>
+                Panel Moderatora
+            </h1>
+            <table>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Dodaj osobę zaginioną", "AddMissingPerson", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Edytuj osoby zaginione", "PersonsList", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.ActionLink("Usuń osobę zaginioną", "PersonsList", "", new { @class = "text-white cell_margin btn btn-success" })
+                    </td>
+                </tr>
+            </table>
+        }
+        else
+        {
+            <h1>
+                Nie masz dostępu do tej strony! Przejdź do strony głównej
+            </h1>
+        }
+    }
+    else
+    {
+        <h1>
+            Nie masz dostępu do tej strony! Przejdź do strony głównej
+        </h1>
+    }
+
+}

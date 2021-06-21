@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="jumbotron">
+        <h1>Rejestr osób zaginionych</h1>
+        <p class="lead">Aplikacja umożliwia dodawanie informacji o nowych osobach zaginionych.</p>
+        @Html.ActionLink("Rejestr osób", "PersonsList", "Home", new { @class = "btn btn-primary" })
+    </div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Znajdź swoich bliskich</h2>
+        <p class="text-justify">
+            Jeżeli w ostatnim czasie zaginął ktoś z Twojego otoczenia lub członek Twojej rodziny możesz skorzystać z naszego systemu, aby przyspieszyć poszukiwania zaginionej osoby.
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Bądź na bieżąco</h2>
+        <p>Śledź na bieżąco zmiany o osobach zaginionych w panelu na stronie.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Udzielaj się</h2>
+        <p>Nie bądź obojętny wobec innych i dodawaj osoby nawet z podejrzeniem zaginięcia. Nie można zwlekać w takich sytuacjach!</p>
+    </div>
+</div>

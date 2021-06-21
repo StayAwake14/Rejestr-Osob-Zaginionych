@@ -1,0 +1,89 @@
+﻿@model RejestrOsóbZaginionych.Controllers.missingPersons
+
+@{
+    ViewBag.Title = "ROZ - Szczegóły osoby";
+}
+
+<h2>Szczegóły Zaginionej Osoby</h2>
+
+<div>
+    <h4>Informacje</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wiek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wiek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wojewodztwo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wojewodztwo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.obraz)
+        </dt>
+
+        <dd>
+            <img class="img-thumbnail" width="200" height="200" src="../@Html.DisplayFor(model => model.obraz)" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.opis)
+        </dd>
+        <!--
+    <dt>
+        @Html.DisplayNameFor(model => model.status)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.status)
+    </dd>
+        -->
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Lista osób", "PersonsList", "", new { @class = "btn btn-success" })
+</p>

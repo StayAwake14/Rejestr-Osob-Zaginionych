@@ -1,0 +1,115 @@
+﻿@model IEnumerable<RejestrOsóbZaginionych.Controllers.missingPersons>
+
+@{
+    ViewBag.Title = "ROZ - Lista osób";
+}
+
+<h2>Lista osób zaginionych</h2>
+
+@{
+
+
+    @Html.ActionLink("Dodaj osobę zaginioną", "AddMissingPerson", "", new { @class = "text-white  btn btn-success" })
+
+
+}
+
+
+    <table class="cell_margin table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.imie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nazwisko)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.wiek)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.plec)
+            </th>
+            <th>
+                @Html.ActionLink("Wojewodztwo", "PersonsList", new { sortOrder = ViewBag.wojewodztwo })
+            </th>
+            <th>
+                @{
+                    if (Session["login"] != null && (Session["rank"].ToString() == "Administrator" || Session["rank"].ToString() == "Moderator"))
+                    {
+                        @Html.ActionLink("Status", "PersonsList", new { sortOrder = ViewBag.status })
+
+                    }
+                }
+            </th>
+            <th>
+            </th>
+            <th></th>
+            <!--  <th>
+                @Html.DisplayNameFor(model => model.data)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.opis)
+            </th>-->
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.status == "Z" || (Session["login"] != null && (Session["rank"].ToString() == "Administrator" || Session["rank"].ToString() == "Moderator")))
+            {
+                <tr>
+                    <td class="align-middle">
+                        @Html.DisplayFor(modelItem => item.imie)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nazwisko)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.wiek)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.plec)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.wojewodztwo)
+                    </td>
+                    <td>
+                        @{
+                            if (Session["login"] != null && (Session["rank"].ToString() == "Administrator" || Session["rank"].ToString() == "Moderator"))
+                            {
+
+                                @Html.DisplayFor(modelItem => item.status)
+
+                            }
+                        }
+                    </td>
+
+                    <td>
+                        <img class="img-thumbnail" width="200" height="200" src="@Html.DisplayFor(modelItem => item.obraz)" />
+                    </td>
+                    <!--    <td>
+                         @Html.DisplayFor(modelItem => item.data)
+                     </td>
+                     <td>
+                         @Html.DisplayFor(modelItem => item.opis)
+                     </td>
+                        -->
+                    <td>
+                        @Html.ActionLink("Szczegóły", "Details", new { id = item.id }, new { @class = "text-white btn btn-info" })
+                        @{
+
+                            if (Session["login"] != null && (Session["rank"].ToString() == "Administrator" || Session["rank"].ToString() == "Moderator"))
+                            {
+
+
+                                @Html.ActionLink("Edit", "EditMissingPerson", new { id = item.id }, new { @class = "margin-right text-white btn btn-warning" })
+                                @Html.ActionLink("Delete", "DeleteMissingPerson", new { id = item.id }, new { @class = "margin-right text-white btn btn-danger" })
+
+
+                            }
+                        }
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>

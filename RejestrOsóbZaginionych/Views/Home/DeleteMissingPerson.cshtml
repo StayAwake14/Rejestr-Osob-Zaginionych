@@ -1,0 +1,65 @@
+﻿@model RejestrOsóbZaginionych.Controllers.missingPersons
+
+@{
+    ViewBag.Title = "ROZ - Usuwanie";
+}
+
+<h2>Potwierdź usunięcie osoby</h2>
+
+<h3>Czy na pewno chcesz skasować tą osobę?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.imie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nazwisko)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nazwisko)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wiek)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wiek)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.plec)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.plec)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wojewodztwo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wojewodztwo)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm("DeleteMissingPerson", "Home", FormMethod.Post)) {
+        @Html.AntiForgeryToken()
+
+<div class="form-actions no-color">
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <input type="hidden" value="@Model.id" name="id"/>
+    @Html.ActionLink("Lista osób zaginionych", "PersonsList", "", new { @class = "text-white btn btn-success" })
+</div>
+    }
+</div>
